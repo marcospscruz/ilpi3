@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',"django-insecure-&ywgfxidfy0-t%p
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['betel-app-ilpi.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['web-production-1e6b.up.railway.app/','127.0.0.1']
 
 
 # Application definition
@@ -149,3 +149,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/) 
 LOGIN_REDIRECT_URL = '/' 
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-1e6b.up.railway.app/']
