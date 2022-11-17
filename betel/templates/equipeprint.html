@@ -1,0 +1,36 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+  <h1>Equipe</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+<br><br>
+  {% if membros %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Nome</th>
+		<th>Profissão</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for membro in membros %}
+      <tr>
+		<td>{{ membro.nome }}</td>
+		<td>{{ membro.profissao }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+  {% else %} 
+
+    <p>Não há membros de equipe cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

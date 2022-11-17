@@ -1,0 +1,33 @@
+{% extends "print_generic.html" %} 
+
+{% block content %} 
+
+  <h1>Lista de Familiares</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+<br><br>
+  {% if familiares %} 
+
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Hóspede</th>
+		<th>Famíliar</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for familiar in familiares %}
+      <tr>
+		<td>{{ familiar.hospede }}</td>
+		<td>{{ familiar.nome }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+
+  {% else %} 
+
+    <p>Não há familiares cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

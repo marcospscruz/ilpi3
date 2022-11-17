@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Medicações</h1>
+  <a href="{% url 'medicacao-create' %}" class="btn btn-primary" role="button">Cadastrar nova medicação</a>
+  <a href="{% url 'medicacoesprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>    
+  <br><br>      
+
+  {% if medicacao_list %} 
+
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Nome</th>
+        <th>Quantidade</th>
+		<th>Unidade</th>
+        <th>Fabricante</th>
+		<th>Genérico</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for medicacao in medicacao_list %}
+      <tr>
+		<td>{{ medicacao.nome }}</td>
+		<td>{{ medicacao.quantidade }}</td>
+		<td>{{ medicacao.unidade}}</td>
+		<td>{{ medicacao.fabricante }}</td>
+		<td>{% if medicacao.generico == True %} Sim {% elif medicacao.generico == False %} Não {% endif %}</td>
+		<td><a href="{% url 'medicacao-update' medicacao.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'medicacao-delete' medicacao.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+  {% else %} 
+
+    <p>Não há medicações cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Controle de Dextro</h1>
+  <a href="{% url 'dextro-create' %}" class="btn btn-primary" role="button">Cadastrar novo controle de dextro</a>
+  <a href="{% url 'dextrosprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+  <br><br>    
+
+  {% if controle_de_dextro_list %} 
+  
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>Dextro</th>
+		<th>Observação</th>
+        <th>Responsável</th>
+		<th>Editar</th>
+        <th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for controle_de_dextro in controle_de_dextro_list %}
+      <tr>
+		<td>{% if controle_de_dextro.hospede %} {{ controle_de_dextro.hospede }}{% endif %}</td>
+		<td>{% if controle_de_dextro.data_hora %} {{ controle_de_dextro.data_hora }}{% endif %}</td>
+		<td>{% if controle_de_dextro.dextro %} {{ controle_de_dextro.dextro }}{% endif %}</td>
+		<td>{% if controle_de_dextro.observacao %} {{ controle_de_dextro.observacao }}{% endif %}</td>
+		<td>{% if controle_de_dextro.responsavel %} {{ controle_de_dextro.responsavel }}{% endif %}</td>
+		<td><a href="{% url 'dextro-update' controle_de_dextro.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'dextro-delete' controle_de_dextro.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>    
+ 
+
+  {% else %} 
+
+    <p>Não há nenhum registro de controle de dextro</p> 
+
+  {% endif %}  
+
+{% endblock %}

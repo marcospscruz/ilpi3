@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Lista de Familiares</h1> 
+<a href="{% url 'familiar-create' %}" class="btn btn-primary" role="button">Cadastrar novo familiar</a>
+<a href="{% url 'familiaresprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+<br><br>
+
+  {% if familiar_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Hóspede</th>
+		<th>Famíliar</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for familiar in familiar_list %}
+      <tr>
+		<td>{{ familiar.hospede }}</td>
+		<td><a href="{{ familiar.get_absolute_url }}">{{ familiar.nome }}</a></td>
+		<td><a href="{% url 'familiar-update' familiar.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'familiar-delete' familiar.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+  {% else %} 
+
+    <p>Não há familiares cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

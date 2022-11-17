@@ -1,0 +1,25 @@
+{% extends "print_generic.html" %} 
+
+{% block content %}
+<h1>Membro da equipe: {{ equipe.nome }}, {{ equipe.profissao }}</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>
+
+<br>
+
+<p><b>Nome:</b> {{ equipe.nome }}</p>
+<p><b>Data de nascimento:</b> {% if equipe.data_de_nascimento %} {{ equipe.data_de_nascimento }}{% endif %}</p>
+<p><b>Profissão:</b> {% if equipe.profissao %} {{ equipe.profissao }}{% endif %}</p>
+<p><b>Jornada:</b> {% if equipe.jornada %} {{ equipe.jornada }}{% endif %}</p>
+<p><b>Rua:</b> {% if equipe.endereco_rua %} {{ equipe.endereco_rua }}{% endif %}</p>
+<p><b>Número:</b> {% if equipe.endereco_numero %} {{ equipe.endereco_numero }}{% endif %}</p>
+<p><b>Complemento:</b> {% if equipe.endereco_complemento %} {{ equipe.endereco_complemento }}{% endif %}</p>
+<p><b>CEP:</b> {% if equipe.endereco_cep %} {{ equipe.endereco_cep }}{% endif %}</p>
+<p><b>Bairro:</b> {% if equipe.endereco_bairro %} {{ equipe.endereco_bairro }}{% endif %}</p>
+<p><b>Distrito:</b> {% if equipe.endereco_distrito %} {{ equipe.endereco_distrito }}{% endif %}</p>
+<p><b>Telefone residencial:</b> {% if equipe.telefone_residencial %} {{ equipe.telefone_residencial }}{% endif %}</p>
+<p><b>Telefone celular:</b> {% if equipe.telefone_celular %} {{ equipe.telefone_celular }}{% endif %}</p>
+<p><b>Telefone (outro):</b> {% if equipe.telefone_outro %} {{ equipe.telefone_outro }}{% endif %}</p>
+<p><b>Observação:</b> {% if equipe.observacao %} {{ equipe.observacao }}{% endif %}</p>
+
+
+{% endblock %}

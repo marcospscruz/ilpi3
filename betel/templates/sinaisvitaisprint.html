@@ -1,0 +1,66 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Sinais Vitais</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+<br><br>
+{% if sinaisvitais %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>PA</th>
+        <th>Pulso</th>
+		<th>Resp</th>
+        <th>Temp</th>
+		<th>Sat</th>
+        <th>Diures</th>
+		<th>Evacuação</th>
+		<th>Observação</th>
+        <th>Responsável</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for sinais_vitais in sinaisvitais %}
+      <tr>
+		<td>{% if sinais_vitais.hospede %} {{ sinais_vitais.hospede }}{% endif %}</td>
+		<td>{% if sinais_vitais.data_hora %} {{ sinais_vitais.data_hora }}{% endif %}</td>
+		<td>{% if sinais_vitais.pa %} {{ sinais_vitais.pa }}{% endif %}</td>
+		<td>{% if sinais_vitais.pulso %} {{ sinais_vitais.pulso }}{% endif %}</td>
+		<td>{% if sinais_vitais.resp %} {{ sinais_vitais.resp }}{% endif %}</td>
+		<td>{% if sinais_vitais.temp %} {{ sinais_vitais.temp }}{% endif %}</td>
+		<td>{% if sinais_vitais.sat %} {{ sinais_vitais.sat }}{% endif %}</td>
+		<td>{% if sinais_vitais.diures %} {{ sinais_vitais.diures }}{% endif %}</td>
+		<td>{% if sinais_vitais.evacuacao %} {{ sinais_vitais.evacuacao }}{% endif %}</td>
+		<td>{% if sinais_vitais.observacao %} {{ sinais_vitais.observacao }}{% endif %}</td>
+		<td>{% if sinais_vitais.responsavel %} {{ sinais_vitais.responsavel }}{% endif %}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+
+  {% else %} 
+
+    <p>Não há nenhum registro de sinais vitais.</p> 
+
+  {% endif %}  
+
+{% endblock %}

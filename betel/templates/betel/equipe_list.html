@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Equipe</h1>
+  <a href="{% url 'equipe-create' %}" class="btn btn-primary" role="button">Cadastrar novo membro da equipe</a>
+  <a href="{% url 'equipeprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+  <br><br>
+
+  {% if equipe_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Nome</th>
+		<th>Profissão</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for equipe in equipe_list %}
+      <tr>
+		<td><a href="{{ equipe.get_absolute_url }}">{{ equipe.nome }}</a></td>
+		<td><a href="{{ equipe.get_absolute_url }}">{{ equipe.profissao }}</a></td>
+		<td><a href="{% url 'equipe-update' equipe.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'equipe-delete' equipe.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+  
+  {% else %} 
+
+    <p>Não há membros de equipe cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

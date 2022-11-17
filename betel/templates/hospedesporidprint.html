@@ -1,0 +1,67 @@
+{% extends "print_generic.html" %} 
+
+{% block content %}
+  <h1>Hóspede {{ hospede.nome_do_hospede }}</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>
+<br>
+<p><b>Nome do hóspede:</b> {{ hospede.nome_do_hospede }}</p>
+<p><b>Sexo:</b>{% if hospede.sexo == 'M' %} Masculino {% elif hospede.sexo == 'F' %} Feminino {% endif %}</p>
+<p><b>Data de admissão:</b>{% if hospede.data_de_admissao %} {{ hospede.data_de_admissao }}{% endif %}</p>
+<p><b>Número de matrícula:</b>{% if hospede.n_de_matricula %} {{ hospede.n_de_matricula }}{% endif %}</p>
+<p><b>Quarto:</b>{% if hospede.quarto %} {{ hospede.quarto }}{% endif %}</p>
+<p><b>Data desligamento/óbito:</b>{% if hospede.data_desligamento_obito %} {{ hospede.data_desligamento_obito }}{% endif %} </p>
+<p><b>Nascimento:</b> {% if hospede.nascimento %}{{ hospede.nascimento }}{% endif %}</p>
+<p><b>Número BDC:</b> {% if hospede.n_bdc %} {{ hospede.n_bdc }}{% endif %}</p>
+<p><b>Número NIS:</b> {% if hospede.n_nis %} {{ hospede.n_nis }}{% endif %}</p>
+<p><b>Número CNS/SUS:</b> {% if hospede.n_cns_sus %} {{ hospede.n_cns_sus }}{% endif %}</p>
+<p><b>Motivo da hospedagem:</b> {% if hospede.motivo_da_hospedagem == 'AB' %} Abandono {% elif hospede.motivo_da_hospedagem == 'AU' %} Ausência de familiares {% elif hospede.motivo_da_hospedagem == 'OB' %} Óbito do responsável {% elif hospede.motivo_da_hospedagem == 'MU' %} Mudança de endereço {% elif hospede.motivo_da_hospedagem == 'PR' %} Procura por um cuidado especializado e focado no idoso {% elif hospede.motivo_da_hospedagem == 'CO' %} Conflito e desgaste familiar {% elif hospede.motivo_da_hospedagem == 'OJ' %} Ordem Judicial {% elif hospede.motivo_da_hospedagem == 'OP' %} Opção própria do paciente {% elif hospede.motivo_da_hospedagem == 'OU' %} Outro{% endif %} </p>
+<p><b>Procedência:</b> {% if hospede.procedencia == 'CA' %} Casa {% elif hospede.procedencia == 'HO' %} Hospital {% elif hospede.procedencia == 'LI' %} Lar de Idosos {% elif hospede.procedencia == 'OU' %} Outro{% endif %}</p>
+<p><b>Naturalidade:</b> {% if hospede.naturalidade_municipio %} {{ hospede.naturalidade_municipio }}{% endif %}</p>
+<p><b>Estado:</b> {% if hospede.naturalidade_estado %} {{ hospede.naturalidade_estado }}{% endif %}</p>
+<p><b>Cor/raça:</b>{% if hospede.cor_raca == 'BR' %} Branca {% elif hospede.cor_raca == 'PR' %} Preta {% elif hospede.cor_raca == 'AM' %} Amarela {% elif hospede.cor_raca == 'PA' %} Parda{% endif %}</p>
+<p><b>Pessoa com deficiência?:</b> {% if hospede.pessoa_com_deficiencia == True %} Sim {% elif hospede.pessoa_com_deficiencia == False %} Não {% endif %}</p>
+<p><b>CPF:</b> {% if hospede.cpf %}{{ hospede.cpf }}{% endif %}</p>
+<p><b>RG:</b> {% if hospede.rg %}{{ hospede.rg }}{% endif %}</p>
+<p><b>Emissão:</b> {% if hospede.rg_emissao %}{{ hospede.rg_emissao }}{% endif %}</p>
+<p><b>Órgão emissor:</b> {% if hospede.rg_orgao_emissor %}{{ hospede.rg_orgao_emissor }}{% endif %}</p>
+<p><b>UF:</b> {% if hospede.rg_uf %}{{ hospede.rg_uf }}{% endif %}</p>
+<p><b>Certidão de nascimento folha:</b> {% if hospede.certidao_de_nascimento_folha %}{{ hospede.certidao_de_nascimento_folha }}{% endif %}</p>
+<p><b>Certidão de nascimento livro:</b> {% if hospede.certidao_de_nascimento_livro %}{{ hospede.certidao_de_nascimento_livro }}{% endif %}</p>
+<p><b>Mãe:</b> {% if  hospede.mae %}{{  hospede.mae }}{% endif %}</p>
+<p><b>Pai:</b> {% if  hospede.pai %}{{  hospede.pai }}{% endif %}</p>
+<p><b>Nome do responsável:</b> {% if  hospede.nome_do_responsavel %}{{  hospede.nome_do_responsavel }}{% endif %}</p>
+<p><b>Grau de parentesco:</b> {% if  hospede.grau_de_parentesco %}{{  hospede.grau_de_parentesco }}{% endif %}</p>
+<p><b>Estado civil:</b> {% if hospede.estado_civil == 'SO' %} Solteiro(a) {% elif hospede.estado_civil == 'CA' %} Casado(a) {% elif hospede.estado_civil == 'SE' %} Separado(a) {% elif hospede.estado_civil == 'DI' %} Divorciado(a) {% elif hospede.estado_civil == 'VI' %} Viúvo(a){% endif %}</p>
+<p><b>Grau de instrução:</b> {% if hospede.grau_de_instrucao == 'EFI' %} Ensino Fundamental Incompleto {% elif hospede.grau_de_instrucao == 'EFC' %} Ensino Fundamental Completo {% elif hospede.grau_de_instrucao == 'EMI' %} Ensino Médio Incompleto {% elif hospede.grau_de_instrucao == 'EMC' %} Ensino Médio Completo {% elif hospede.grau_de_instrucao == 'ESI' %} Ensino Superior Incompleto {% elif hospede.grau_de_instrucao == 'ESC' %} Ensino Superior Completo{% endif %}</p>
+<p><b>Profissão:</b> {% if hospede.profissao %}{{ hospede.profissao }}{% endif %}</p>
+<p><b>Ocupação:</b> {% if hospede.ocupacao %}{{ hospede.ocupacao }}{% endif %}</p>
+<p><b>Estado profissional:</b> {% if hospede.estado_profissional == 'EM' %} Empregado(a) {% elif hospede.estado_profissional == 'DE' %} Desempregado(a) {% elif hospede.estado_profissional == 'AP' %} Aposentado(a) {% elif hospede.estado_profissional == 'PE' %} Pensionista{% endif %}</p>
+<p><b>Rua:</b> {% if hospede.endereco_rua %}{{ hospede.endereco_rua }}{% endif %}</p>
+<p><b>Número:</b> {% if hospede.endereco_numero %}{{ hospede.endereco_numero }}{% endif %}</p>
+<p><b>Complemento:</b> {% if hospede.endereco_complemento %}{{ hospede.endereco_complemento }}{% endif %}</p>
+<p><b>CEP:</b> {% if hospede.endereco_cep %}{{ hospede.endereco_cep }}{% endif %}</p>
+<p><b>Bairro:</b> {% if hospede.endereco_bairro %}{{ hospede.endereco_bairro }}{% endif %}</p>
+<p><b>Distrito:</b> {% if hospede.endereco_distrito %}{{ hospede.endereco_distrito }}{% endif %}</p>
+<p><b>Telefone Residencial:</b> {% if hospede.telefone_residencial %}{{ hospede.telefone_residencial }}{% endif %}</p>
+<p><b>Telefone Celular:</b> {% if hospede.telefone_celular %}{{ hospede.telefone_celular }}{% endif %}</p>
+<p><b>Telefone (outro):</b> {% if hospede.telefone_outro %}{{ hospede.telefone_outro }}{% endif %}</p>
+<p><b>Ponto de referência:</b> {% if hospede.ponto_de_referencia %}{{ hospede.ponto_de_referencia }}{% endif %}</p>
+<p><b>Condições de moradia:</b> {% if hospede.condicoes_de_moradia == 'P' %} Própria {% elif hospede.condicoes_de_moradia == 'A' %} Alugada {% elif hospede.condicoes_de_moradia == 'C' %} Cedida{% endif %}</p>
+<p><b>Número de cômodos:</b> {% if hospede.hospede.n_de_comodos %}{{ hospede.hospede.n_de_comodos }}{% endif %}</p>
+<p><b>Valor aluguel/financiamento:</b> {% if hospede.valor_aluguel_ou_financiamento %}{{ hospede.valor_aluguel_ou_financiamento }}{% endif %}</p>
+<p><b>Tipo de construcao:</b> {% if hospede.tipo_de_construcao == 'AL' %} Alvenaria {% elif hospede.tipo_de_construcao == 'MA' %} Madeira {% elif hospede.tipo_de_construcao == 'MI' %} Mista {% endif %}</p>
+<p><b>Situacao habitacional:</b> {% if hospede.situacao_habitacional == 'CO' %} Cortiço {% elif hospede.situacao_habitacional == 'FA' %} Favela {% elif hospede.situacao_habitacional == 'LI' %} Loteamento Irregular {% endif %}</p>
+<p><b>Recebe programa de transferencia de renda?:</b> {% if hospede.recebe_programa_de_transferencia_de_renda == 'NR' %} Não Recebe {% elif hospede.recebe_programa_de_transferencia_de_renda == 'SB' %} Sim, BPC {% elif hospede.recebe_programa_de_transferencia_de_renda == 'BF' %} Sim, Bolsa Família {% elif hospede.recebe_programa_de_transferencia_de_renda == 'SL' %} Sim, LOAS {% elif hospede.recebe_programa_de_transferencia_de_renda == 'SO' %} Sim, Outros{% endif %}</p>
+<p><b>Recebe 13º salário:</b> {% if hospede.recebe_13_salario == True %} Sim {% elif hospede.recebe_13_salario == False %} Não {% endif %}</p>
+<p><b>1ª parcela do 13º:</b> {% if hospede.parcela1_13 %}{{ hospede.parcela1_13 }}{% endif %}</p>
+<p><b>2ª parcela do 13º:</b> {% if hospede.parcela2_13 %}{{ hospede.parcela2_13 }}{% endif %}</p>
+<p><b>Recebe benefício de prestação continuada?:</b> {% if hospede.recebe_beneficio_de_prestacao_continuada == 'NR' %} Não Recebe {% elif hospede.recebe_beneficio_de_prestacao_continuada == 'SI' %} Sim, Idoso {% elif hospede.recebe_beneficio_de_prestacao_continuada == 'SP' %} Sim, Pessoa com deficiência {% endif %}</p>
+<p><b>Possui convênio médico?:</b> {% if hospede.possui_convenio_medico == True %} Sim {% elif hospede.possui_convenio_medico == False %} Não {% endif %}</p>
+<p><b>Convênio:</b>  {% if hospede.qual_convenio %}{{ hospede.qual_convenio }}{% endif %}</p>
+<p><b>Recebe auxílio para custo de despesas?:</b> {% if hospede.idoso_recebe_auxilio_para_custo_de_despesas == True %} Sim {% elif hospede.idoso_recebe_auxilio_para_custo_de_despesas == False %} Não {% endif %}</p>
+<p><b>Qual auxílio?:</b> {% if hospede.qual_auxilio %}{{ hospede.qual_auxilio }}{% endif %}</p>
+<p><b>Demanda apresentada/orientações/encaminhamentos:</b> {% if hospede.demanda_apresentada_orientacoes_encaminhamentos %}{{ hospede.demanda_apresentada_orientacoes_encaminhamentos }}{% endif %}</p>
+<p><b>Assistente social:</b> {% if hospede.assistente_social %}{{ hospede.assistente_social }}{% endif %}</p>
+<p><b>Data de preenchimento da ficha:</b> {% if hospede.data_de_preenchimento_da_ficha %}{{ hospede.data_de_preenchimento_da_ficha }}{% endif %}</p>
+<p><b>Observação:</b> {% if hospede.observacao %}{{ hospede.observacao }}{% endif %}</p>
+{% endblock %}

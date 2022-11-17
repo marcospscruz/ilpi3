@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Fichas de Avaliação</h1>
+  <a href="{% url 'avaliacao-create' %}" class="btn btn-primary" role="button">Cadastrar nova ficha de avaliação</a>
+  <br><br>      
+
+  {% if ficha_de_avaliacao_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Hóspede</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for ficha_de_avaliacao in ficha_de_avaliacao_list %}
+      <tr>
+		<td><a href="{{ ficha_de_avaliacao.get_absolute_url }}">{{ ficha_de_avaliacao.hospede }}</a> </td>
+		<td><a href="{% url 'avaliacao-update' ficha_de_avaliacao.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'avaliacao-delete' ficha_de_avaliacao.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+
+  {% else %} 
+
+    <p>Não há fichas de avaliação cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

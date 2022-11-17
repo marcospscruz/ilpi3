@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Hóspede {{ familiar.hospede }} -> Familiar {{ familiar.nome }}</h1>
+
+<br>
+<a href="{% url 'familiar-update' familiar.id %}" class="btn btn-primary" role="button">Editar</a>
+<a href="{% url 'familiar-delete' familiar.id %}" class="btn btn-primary" role="button">Excluir</a>
+<a href="{% url 'familiarporidprint' familiar.id %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+<br>
+<br>
+
+<p><b>Nome do hóspede:</b> {{ familiar.hospede }}</p>
+<p><b>Nome do familiar:</b> {{ familiar.nome }}</p>
+<p><b>Data de nascimento:</b> {% if familiar.data_de_nascimento %} {{ familiar.data_de_nascimento }}{% endif %}</p>
+<p><b>Parentesco/vínculo:</b> {% if familiar.parentesco_vinculo %} {{ familiar.parentesco_vinculo }}{% endif %}</p>
+<p><b>Profissão:</b> {% if familiar.profissao %} {{ familiar.profissao }}{% endif %}</p>
+<p><b>Ocupação:</b> {% if familiar.ocupacao %} {{ familiar.ocupacao }}{% endif %}</p>
+<p><b>Renda:</b> {% if familiar.renda %} {{ familiar.renda }}{% endif %}</p>
+<p><b>Fatores de risco social:</b> {% if familiar.fatores_de_risco_social.all %}{{ familiar.fatores_de_risco_social.all|join:", " }}{% endif %}</p>
+<p><b>Estuda?:</b> {% if familiar.estuda == True %} Sim {% elif familiar.estuda == False %} Não {% endif %}</p>
+<p><b>Grau de instrução:</b> {% if familiar.grau_de_instrucao == 'EFI' %} Ensino Fundamental Incompleto {% elif familiar.grau_de_instrucao == 'EFC' %} Ensino Fundamental Completo {% elif familiar.grau_de_instrucao == 'EMI' %} Ensino Médio Incompleto {% elif familiar.grau_de_instrucao == 'EMC' %} Ensino Médio Completo {% elif familiar.grau_de_instrucao == 'ESI' %} Ensino Superior Incompleto {% elif familiar.grau_de_instrucao == 'ESC' %} Ensino Superior Completo{% endif %}</p>
+<p><b>Inserido em ILPI?:</b> {% if familiar.inserido_em_ilpi == True %} Sim {% elif familiar.inserido_em_ilpi == False %} Não {% endif %}</p>
+<p><b>Inserido em CEDESP?:</b> {% if familiar.inserido_em_cedesp == True %} Sim {% elif familiar.inserido_em_cedesp == False %} Não {% endif %}</p>
+<p><b>Inserido em NCI?:</b> {% if familiar.inserido_em_nci == True %} Sim {% elif familiar.inserido_em_nci == False %} Não {% endif %}</p>
+<p><b>Observação:</b> {% if familiar.observacao %} {{ familiar.observacao }}{% endif %}</p>
+
+{% endblock %}

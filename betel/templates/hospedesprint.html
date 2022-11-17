@@ -1,0 +1,33 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+  <h1>Lista de Hóspedes</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+<br><br>
+  {% if hospedes %} 
+
+
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Hóspede</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for hospede in hospedes %}
+      <tr>
+		<td>{{ hospede.nome_do_hospede }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+
+  {% else %} 
+
+    <p>Não há hóspedes cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

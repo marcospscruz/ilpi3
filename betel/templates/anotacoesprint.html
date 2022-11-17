@@ -1,0 +1,45 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Anotação de Enfermagem</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+<br><br>
+  {% if anotacoes %} 
+
+
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>Anotação</th>
+        <th>Responsável</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for anotacao  in anotacoes %}
+      <tr>
+		<td>{{ anotacao.hospede }}</td>
+		<td>{{ anotacao.data_hora }}</td>
+		<td>{{ anotacao.anotacao }}</td>
+		<td>{{ anotacao.responsavel }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+
+  {% else %} 
+
+    <p>Não há hóspedes cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Evoluções</h1>
+  <a href="{% url 'evolucao-create' %}" class="btn btn-primary" role="button">Cadastrar nova evolução</a>
+  <a href="{% url 'evolucoesprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>  
+  <br><br>    
+  
+
+  {% if evolucao_list %}
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>Tipo</th>
+        <th>Evolução</th>
+		<th>Responsável</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for evolucao in evolucao_list %}
+      <tr>
+		<td>{{ evolucao.hospede }}</td>
+		<td>{{ evolucao.data_hora }}</td>
+		<td>{% if evolucao.tipo_de_evolucao == 'EN' %} Enfermagem {% elif evolucao.tipo_de_evolucao == 'FI' %} Fisioterapêutica {% elif evolucao.tipo_de_evolucao == 'NU' %} Nutrição {% elif evolucao.tipo_de_evolucao == 'ME' %} Médica{% endif %}</td>
+		<td>{{ evolucao.evolucao }}</td>
+		<td>{{ evolucao.responsavel }}</td>
+		<td><a href="{% url 'evolucao-update' evolucao.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'evolucao-delete' evolucao.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+  {% else %} 
+
+    <p>Não há evoluções cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

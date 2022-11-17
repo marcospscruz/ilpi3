@@ -1,0 +1,78 @@
+{% extends "print_generic.html" %} 
+
+{% block content %}
+<h1>Hóspede {{ ficha_de_avaliacao.hospede }}</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>
+
+<br>
+
+
+<p><b>Enfermidades:</b> {% if ficha_de_avaliacao.enfermidade.all %} {{ ficha_de_avaliacao.enfermidade.all|join:", " }}{% endif %}</p>
+<p><b>Alergia medicamentosa:</b> {% if ficha_de_avaliacao.alergia_medicamentosa == True %} Sim {% elif ficha_de_avaliacao.alergia_medicamentosa == False %} Não {% endif %}</p>
+<p><b>Qual alergia?:</b> {% if ficha_de_avaliacao.qual_alergia_med %} {{ ficha_de_avaliacao.qual_alergia_med }}{% endif %}</p>
+<p><b>Internações hospitalares:</b> {% if ficha_de_avaliacao.internacoes_hospitalares == True %} Sim {% elif ficha_de_avaliacao.internacoes_hospitalares == False %} Não {% endif %}</p>
+<p><b>Data da última internação:</b> {% if ficha_de_avaliacao.data_da_ultima_internacao %} {{ ficha_de_avaliacao.data_da_ultima_internacao }}{% endif %}</p>
+<p><b>Duração da internação:</b> {% if ficha_de_avaliacao.duracao_da_internacao %} {{ ficha_de_avaliacao.duracao_da_internacao }}{% endif %}</p>
+<p><b>Motivação da internação:</b> {% if ficha_de_avaliacao.motivacao_da_internacao %} {{ ficha_de_avaliacao.motivacao_da_internacao }}{% endif %}</p>
+<p><b>Já sofreu quedas?:</b> {% if ficha_de_avaliacao.ja_sofreu_quedas == True %} Sim {% elif ficha_de_avaliacao.ja_sofreu_quedas == False %} Não {% endif %}</p>
+<p><b>Já teve fraturas?:</b> {% if ficha_de_avaliacao.ja_teve_fraturas == True %} Sim {% elif ficha_de_avaliacao.ja_teve_fraturas == False %} Não {% endif %}</p>
+<p><b>Há quanto tempo teve fratura?:</b> {% if ficha_de_avaliacao.fratura_ha_quanto_tempo %} {{ ficha_de_avaliacao.fratura_ha_quanto_tempo }}{% endif %}</p>
+<p><b>Região acometida pela fratura:</b> {% if ficha_de_avaliacao.fratura_regiao_acometida %} {{ ficha_de_avaliacao.fratura_regiao_acometida }}{% endif %}</p>
+<p><b>Já foi submetido a cirurgias?:</b> {% if ficha_de_avaliacao.ja_foi_submetido_a_cirurgias == True %} Sim {% elif ficha_de_avaliacao.ja_foi_submetido_a_cirurgias == False %} Não {% endif %}</p>
+<p><b>Qual cirurgia:</b> {% if ficha_de_avaliacao.qual_cirurgia %} {{ ficha_de_avaliacao.qual_cirurgia }}{% endif %}</p>
+<p><b>Síndrome Respiratória Aguda:</b> {% if ficha_de_avaliacao.sindrome_respiratoria_aguda == True %} Sim {% elif ficha_de_avaliacao.sindrome_respiratoria_aguda == False %} Não {% endif %}</p>
+<p><b>Quando teve SRA?:</b> {% if ficha_de_avaliacao.SRA_quando %} {{ ficha_de_avaliacao.SRA_quando }}{% endif %}</p>
+<p><b>Se curou totalmente de SRA?:</b> {% if ficha_de_avaliacao.SRA_se_curou_totalmente == True %} Sim {% elif ficha_de_avaliacao.SRA_se_curou_totalmente == False %} Não {% endif %}</p>
+<p><b>Complicações SRA:</b> {% if ficha_de_avaliacao.SRA_complicacoes %} {{ ficha_de_avaliacao.SRA_complicacoes }}{% endif %}</p>
+<p><b>Vacinado contra Covid?:</b> {% if ficha_de_avaliacao.vacinado_contra_covid == True %} Sim {% elif ficha_de_avaliacao.vacinado_contra_covid == False %} Não {% endif %}</p>
+<p><b>Apetite:</b> {% if ficha_de_avaliacao.apetite == 'BOM' %} Bom {% elif ficha_de_avaliacao.apetite == 'RUI' %} Ruim {% endif %}</p>
+<p><b>Vias de alimentação:</b> {% if ficha_de_avaliacao.vias_de_alimentacao == 'ORA' %} Oral {% elif ficha_de_avaliacao.vias_de_alimentacao == 'SNG' %} SNG {% elif ficha_de_avaliacao.vias_de_alimentacao == 'SNE' %} SNE {% elif ficha_de_avaliacao.vias_de_alimentacao == 'PAR' %} Parenteral {% elif ficha_de_avaliacao.vias_de_alimentacao == 'JEJ' %} Jejunostomia {% elif ficha_de_avaliacao.vias_de_alimentacao == 'GAS' %} Gastrostomia {% endif %}</p>
+<p><b>Alterações orais:</b> {% if ficha_de_avaliacao.alteracoes_orais == 'UPD' %} Uso de prótese dentária {% elif ficha_de_avaliacao.alteracoes_orais == 'DED' %} Dificuldade em deglutir {% elif ficha_de_avaliacao.alteracoes_orais == 'DEM' %} Dificuldade em mastigar{% endif %}</p>
+<p><b>Tipo de alimentação:</b> {% if ficha_de_avaliacao.tipo_de_alimentacao == 'SO' %} Sólida {% elif ficha_de_avaliacao.tipo_de_alimentacao == 'PA' %} Pastosa {% elif ficha_de_avaliacao.tipo_de_alimentacao == 'SE' %} Semilíquida {% elif ficha_de_avaliacao.tipo_de_alimentacao == 'LI' %} Líquida{% endif %}</p>
+<p><b>Uso de técnicas assistivas (canudinho, espessante, etc):</b> {% if ficha_de_avaliacao.uso_de_tecnicas_assistivas_canudinho_espessante == True %} Sim {% elif ficha_de_avaliacao.uso_de_tecnicas_assistivas_canudinho_espessante == False %} Não {% endif %}</p>
+<p><b>Peso habitual:</b> {% if ficha_de_avaliacao.peso_habitual %} {{ ficha_de_avaliacao.peso_habitual }}{% endif %}</p>
+<p><b>Peso atual:</b> {% if ficha_de_avaliacao.peso_atual %} {{ ficha_de_avaliacao.peso_atual }}{% endif %}</p>
+<p><b>Perdeu peso nos últimos 3 meses?:</b> {% if ficha_de_avaliacao.perda_de_peso_nos_ultimos_3meses == True %} Sim {% elif ficha_de_avaliacao.perda_de_peso_nos_ultimos_3meses == False %} Não {% endif %}</p>
+<p><b>Quanto perdeu:</b> {% if ficha_de_avaliacao.quanto_perdeu %} {{ ficha_de_avaliacao.quanto_perdeu }}{% endif %}</p>
+<p><b>Altura:</b> {% if ficha_de_avaliacao.altura %} {{ ficha_de_avaliacao.altura }}{% endif %}</p>
+<p><b>IMC:</b> {% if ficha_de_avaliacao.imc %} {{ ficha_de_avaliacao.imc }}{% endif %}</p>
+<p><b>Circunferência cintura:</b> {% if ficha_de_avaliacao.circunferencia_cintura %} {{ ficha_de_avaliacao.circunferencia_cintura }}{% endif %}</p>
+<p><b>Alergia alimentar?:</b> {% if ficha_de_avaliacao.alergia_alimentar == True %} Sim {% elif ficha_de_avaliacao.alergia_alimentar == False %} Não {% endif %}</p>
+<p><b>Qual alergia alimentar:</b> {% if ficha_de_avaliacao.qual_alergia_alimentar %} {{ ficha_de_avaliacao.qual_alergia_alimentar }}{% endif %}</p>
+<p><b>Preferência alimentar:</b> {% if ficha_de_avaliacao.preferencia_alimentar %} {{ ficha_de_avaliacao.preferencia_alimentar }}{% endif %}</p>
+<p><b>Restrição alimentar:</b> {% if ficha_de_avaliacao.restricao_alimentar %} {{ ficha_de_avaliacao.restricao_alimentar }}{% endif %}</p>
+<p><b>Eliminação intestinal:</b> {% if ficha_de_avaliacao.eliminacao_intestinal == 'NOR' %} Normal {% elif ficha_de_avaliacao.eliminacao_intestinal == 'CON' %} Constipação {% elif ficha_de_avaliacao.eliminacao_intestinal == 'DIA' %} Diarreia {% elif ficha_de_avaliacao.eliminacao_intestinal == 'MHI' %} Mudança de hábito Intestinal{% endif %}</p>
+<p><b>Via de eliminação intestinal:</b> {% if ficha_de_avaliacao.via_de_eliminacao_intestinal == 'N' %} Normal {% elif ficha_de_avaliacao.via_de_eliminacao_intestinal == 'F' %} Fralda {% endif %}</p>
+<p><b>Eliminação urinária:</b> {% if ficha_de_avaliacao.eliminacao_urinaria == 'NOR' %} Normal {% elif ficha_de_avaliacao.eliminacao_urinaria == 'M5V' %} Menos de 5 vezes por dia {% elif ficha_de_avaliacao.eliminacao_urinaria == 'POL' %} Polaciúria {% elif ficha_de_avaliacao.eliminacao_urinaria == 'NIC' %} Nicturia {% elif ficha_de_avaliacao.eliminacao_urinaria == 'URG' %} Urgência Miccional {% elif ficha_de_avaliacao.eliminacao_urinaria == 'DIM' %} Diminuição do jato {% endif %}</p>
+<p><b>Via de eliminação urinária:</b> {% if ficha_de_avaliacao.via_de_eliminacao_urinaria == 'ESP' %} Espontânea {% elif ficha_de_avaliacao.via_de_eliminacao_urinaria == 'SVD' %} SVD {% elif ficha_de_avaliacao.via_de_eliminacao_urinaria == 'SVA' %} SVA {% elif ficha_de_avaliacao.via_de_eliminacao_urinaria == 'FRA' %} Fralda{% endif %}</p>
+<p><b>Incontinência urinária:</b> {% if ficha_de_avaliacao.incontinencia_urinaria == True %} Sim {% elif ficha_de_avaliacao.incontinencia_urinaria == False %} Não {% endif %}</p>
+<p><b>Ciclo menstrual:</b> {% if ficha_de_avaliacao.ciclo_menstrual == 'SA' %} Sem alterações {% elif ficha_de_avaliacao.ciclo_menstrual == 'MP' %} Menopausa {% elif ficha_de_avaliacao.ciclo_menstrual == 'AD' %} Amenorréia Disfuncional{% endif %}</p>
+<p><b>Sono e repouso:</b> {% if ficha_de_avaliacao.sono_e_repouso == 'NTI' %} Não tem insônia {% elif ficha_de_avaliacao.sono_e_repouso == 'DCS' %} Apresenta dificuldade em conciliar o sono {% elif ficha_de_avaliacao.sono_e_repouso == 'AVV' %} Acorda várias vezes {% elif ficha_de_avaliacao.sono_e_repouso == 'SON' %} Sonolência {% elif ficha_de_avaliacao.sono_e_repouso == 'DDD' %} Dorme durante o dia {% elif ficha_de_avaliacao.sono_e_repouso == 'TIO' %} Tem insônia em outro local {% endif %}</p>
+<p><b>Dorme quantas horas por noite:</b> {% if ficha_de_avaliacao.dorme_quantas_horas_por_noite %} {{ ficha_de_avaliacao.dorme_quantas_horas_por_noite }}{% endif %}</p>
+<p><b>Apresenta dor:</b> {% if ficha_de_avaliacao.apresenta_dor == True %} Sim {% elif ficha_de_avaliacao.apresenta_dor == False %} Não {% endif %}</p>
+<p><b>Onde apresenta dor:</b> {% if ficha_de_avaliacao.onde_apresenta_dor %} {{ ficha_de_avaliacao.onde_apresenta_dor }}{% endif %}</p>
+<p><b>Dor de cabeça:</b> {% if ficha_de_avaliacao.dor_de_cabeca == True %} Sim {% elif ficha_de_avaliacao.dor_de_cabeca == False %} Não {% endif %}</p>
+<p><b>Sua dor irradia?:</b> {% if ficha_de_avaliacao.sua_dor_irradia == True %} Sim {% elif ficha_de_avaliacao.sua_dor_irradia == False %} Não {% endif %}</p>
+<p><b>Para onde irradia?:</b> {% if ficha_de_avaliacao.para_onde_irradia %} {{ ficha_de_avaliacao.para_onde_irradia }}{% endif %}</p>
+<p><b>Quando a dor se inicia?:</b> {% if ficha_de_avaliacao.quando_a_dor_se_inicia %} {{ ficha_de_avaliacao.quando_a_dor_se_inicia }}{% endif %}</p>
+<p><b>A dor passa com medicamento?:</b> {% if ficha_de_avaliacao.dor_passa_com_medicamento == True %} Sim {% elif ficha_de_avaliacao.dor_passa_com_medicamento == False %} Não {% endif %}</p>
+<p><b>Permanece muito tempo sentado?:</b> {% if ficha_de_avaliacao.permanece_muito_tempo_sentado == True %} Sim {% elif ficha_de_avaliacao.permanece_muito_tempo_sentado == False %} Não {% endif %}</p>
+<p><b>Permanece muito tempo com a cabeça abaixada?:</b> {% if ficha_de_avaliacao.permanece_muito_com_a_cabeca_abaixada == True %} Sim {% elif ficha_de_avaliacao.permanece_muito_com_a_cabeca_abaixada == False %} Não {% endif %}</p>
+<p><b>Possui lesão na coluna cervical?:</b> {% if ficha_de_avaliacao.possui_lesao_na_coluna_cervical == True %} Sim {% elif ficha_de_avaliacao.possui_lesao_na_coluna_cervical == False %} Não {% endif %}</p>
+<p><b>Mobilidade reduzida?:</b> {% if ficha_de_avaliacao.mobilidade_reduzida == True %} Sim {% elif ficha_de_avaliacao.mobilidade_reduzida == False %} Não {% endif %}</p>
+<p><b>Pressão arterial:</b> {% if ficha_de_avaliacao.pressao_arterial %} {{ ficha_de_avaliacao.pressao_arterial }}{% endif %}</p>
+<p><b>Saturação:</b> {% if ficha_de_avaliacao.saturacao %} {{ ficha_de_avaliacao.saturacao }}{% endif %}</p>
+<p><b>Temperatura:</b> {% if ficha_de_avaliacao.temperatura %} {{ ficha_de_avaliacao.temperatura }}{% endif %}</p>
+<p><b>Pulso:</b> {% if ficha_de_avaliacao.pulso %} {{ ficha_de_avaliacao.pulso }}{% endif %}</p>
+<p><b>Oxigenação:</b> {% if ficha_de_avaliacao.oxigenacao == 'ESP' %} Espontânea {% elif ficha_de_avaliacao.oxigenacao == 'CAT' %} Oxigenioterapia -> Cateter Nasal {% elif ficha_de_avaliacao.oxigenacao == 'TRA' %} Oxigenioterapia -> Traqueostomia {% elif ficha_de_avaliacao.oxigenacao == 'MAS' %} Oxigenioterapia -> Máscara de O2 {% endif %}</p>
+<p><b>Estado geral:</b> {% if ficha_de_avaliacao.estado_geral == 'BOM' %} Bom {% elif ficha_de_avaliacao.estado_geral == 'REG' %} Regular {% elif ficha_de_avaliacao.estado_geral == 'MAU' %} Mau{% endif %}</p>
+<p><b>Nível de consciência:</b> {% if ficha_de_avaliacao.nivel_de_consciencia == 'CON' %} Consciente {% elif ficha_de_avaliacao.nivel_de_consciencia == 'INC' %} Inconsciente {% elif ficha_de_avaliacao.nivel_de_consciencia == 'PPC' %} Perda parcial - confuso{% endif %}</p>
+<p><b>Palidez:</b> {% if ficha_de_avaliacao.palidez == 'COR' %} Corado {% elif ficha_de_avaliacao.palidez == 'HIP' %} Hipercorado {% elif ficha_de_avaliacao.palidez == 'DES' %} Descorado{% endif %}</p>
+<p><b>Hidratação:</b> {% if ficha_de_avaliacao.hidratacao == 'HID' %} Hidratado {% elif ficha_de_avaliacao.hidratacao == 'DES' %} Desidratado {% endif %}</p>
+<p><b>Icterícia:</b> {% if ficha_de_avaliacao.ictericia == 'ANI' %} Anictérico {% elif ficha_de_avaliacao.ictericia == 'ICT' %} Ictérico {% endif %}</p>
+<p><b>Cianose:</b> {% if ficha_de_avaliacao.cianose == 'ACI' %} Acianótico {% elif ficha_de_avaliacao.cianose == 'CIA' %} Cianótico {% endif %}</p>
+<p><b>Tabagismo:</b> {% if ficha_de_avaliacao.tabagismo == True %} Sim {% elif ficha_de_avaliacao.tabagismo == False %} Não {% endif %}</p>
+<p><b>Alcoolismo:</b> {% if ficha_de_avaliacao.alcoolismo == True %} Sim {% elif ficha_de_avaliacao.alcoolismo == False %} Não {% endif %}</p>
+<p><b>Outras drogas:</b>  {% if ficha_de_avaliacao.outras_drogas == True %} Sim {% elif ficha_de_avaliacao.outras_drogas == False %} Não {% endif %}</p>
+<p><b>Observação:</b> {% if ficha_de_avaliacao.observacao %} {{ ficha_de_avaliacao.observacao }}{% endif %}</p>
+{% endblock %}

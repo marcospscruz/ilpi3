@@ -1,0 +1,90 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Prescrições</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+  {% if prescricoes %} 
+
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Medicação</th>
+		<th>Dose</th>
+        <th>Horário</th>
+		<th>Repetição</th>
+        <th>Segunda</th>
+		<th>Terça</th>
+        <th>Quarta</th>
+		<th>Quinta</th>
+        <th>Sexta</th>
+		<th>Sábado</th>
+		<th>Domingo</th>
+        <th>Data de início</th>
+        <th>Duração</th>
+		<th>Dias de duração</th>
+        <th>Data final</th>
+		<th>Data da prescrição</th>
+        <th>Médico responsavel</th>
+		<th>Observação</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for prescricao in prescricoes %}
+      <tr>
+		<td>{{ prescricao.hospede }}</td>
+		<td>{{ prescricao.medicacao }}</td>
+		<td>{{ prescricao.dose }}</td>
+		<td>{{ prescricao.horario }}</td>
+		<td>{% if prescricao.repeticao == 'D' %} Diária {% elif prescricao.repeticao == 'S' %} Semanal {% elif prescricao.repeticao == 'M' %} Mensal {% elif prescricao.repeticao == 'A' %} Anual {% elif prescricao.repeticao == 'N' %} Não se repete {% endif %}</td>
+		<td>{% if prescricao.segunda == True %} Sim {% elif prescricao.segunda == False %} Não {% endif %}</td>
+		<td>{% if prescricao.terca == True %} Sim {% elif prescricao.terca == False %} Não {% endif %}</td>
+		<td>{% if prescricao.quarta == True %} Sim {% elif prescricao.quarta == False %} Não {% endif %}</td>
+		<td>{% if prescricao.quinta == True %} Sim {% elif prescricao.quinta == False %} Não {% endif %}</td>
+		<td>{% if prescricao.sexta == True %} Sim {% elif prescricao.sexta == False %} Não {% endif %}</td>
+		<td>{% if prescricao.sabado == True %} Sim {% elif prescricao.sabado == False %} Não {% endif %}</td>
+		<td>{% if prescricao.domingo == True %} Sim {% elif prescricao.domingo == False %} Não {% endif %}</td>
+		<td>{% if prescricao.data_de_inicio %}{{ prescricao.data_de_inicio }}{% endif %}</td>
+		<td>{% if prescricao.duracao == 'CON' %} Contínua {% elif prescricao.duracao == 'DUR' %} Durante... {% elif prescricao.duracao == 'ATE' %} Até a data {% endif %}</td>
+		<td>{% if prescricao.dias_de_duracao %} {{ prescricao.dias_de_duracao }}{% endif %}</td>
+		<td>{% if prescricao.data_final %} {{ prescricao.data_final }}{% endif %}</td>
+		<td>{% if prescricao.data_da_prescricao %} {{prescricao.data_da_prescricao }}{% endif %}</td>
+		<td>{% if prescricao.medico_responsavel %} {{prescricao.medico_responsavel }}{% endif %}</td>
+		<td>{% if prescricao.observacao %} {{prescricao.observacao }}{% endif %}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+
+
+  {% else %} 
+
+    <p>Não há prescrições cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

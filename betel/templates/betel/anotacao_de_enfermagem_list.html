@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Anotação de Enfermagem</h1>
+  <a href="{% url 'anotacao-create' %}" class="btn btn-primary" role="button">Cadastrar nova anotação de enfermagem</a>
+  <a href="{% url 'anotacoesprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+  <br><br>  
+
+  {% if anotacao_de_enfermagem_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>Anotação</th>
+        <th>Responsável</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for anotacao_de_enfermagem in anotacao_de_enfermagem_list %}
+      <tr>
+		<td>{% if anotacao_de_enfermagem.hospede %} {{ anotacao_de_enfermagem.hospede }}{% endif %}</td>
+		<td>{% if anotacao_de_enfermagem.data_hora %} {{ anotacao_de_enfermagem.data_hora }}{% endif %}</td>
+		<td>{% if anotacao_de_enfermagem.anotacao %} {{ anotacao_de_enfermagem.data_hora }}{% endif %}</td>
+		<td>{% if anotacao_de_enfermagem.responsavel %} {{ anotacao_de_enfermagem.responsavel }}{% endif %}</td>
+		<td><a href="{% url 'anotacao-update' anotacao_de_enfermagem.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'anotacao-delete' anotacao_de_enfermagem.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+
+  {% else %} 
+
+    <p>Não há anotações cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

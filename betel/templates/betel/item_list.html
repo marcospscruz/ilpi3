@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Ítens</h1>
+  <a href="{% url 'item-create' %}" class="btn btn-primary" role="button">Cadastrar novo ítem</a>
+  <a href="{% url 'itensprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a> 
+  <br><br>  
+
+  {% if item_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Ítem</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for item in item_list %}
+      <tr>
+		<td>{{ item.nome }}</td>
+		<td><a href="{% url 'item-update' item.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'item-delete' item.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+
+  {% else %} 
+
+    <p>Não há ítens cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

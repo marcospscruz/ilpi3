@@ -1,0 +1,43 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Medicações</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+  {% if medicacoes %} 
+
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Nome</th>
+        <th>Quantidade</th>
+		<th>Unidade</th>
+        <th>Fabricante</th>
+		<th>Genérico</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for medicacao in medicacoes %}
+      <tr>
+		<td>{{ medicacao.nome }}</td>
+		<td>{{ medicacao.quantidade }}</td>
+		<td>{{ medicacao.unidade}}</td>
+		<td>{{ medicacao.fabricante }}</td>
+		<td>{% if medicacao.generico == True %} Sim {% elif medicacao.generico == False %} Não {% endif %}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+
+
+  {% else %} 
+
+    <p>Não há medicações cadastradas.</p> 
+
+  {% endif %}  
+
+{% endblock %}

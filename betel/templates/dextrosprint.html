@@ -1,0 +1,48 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Controle de Dextro</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+  {% if dextros %} 
+<br><br>
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Data/Hora</th>
+		<th>Dextro</th>
+		<th>Observação</th>
+        <th>Responsável</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for dextro in dextros %}
+      <tr>
+		<td>{% if dextro.hospede %} {{ dextro.hospede }}{% endif %}</td>
+		<td>{% if dextro.data_hora %} {{ dextro.data_hora }}{% endif %}</td>
+		<td>{% if dextro.dextro %} {{ dextro.dextro }}{% endif %}</td>
+		<td>{% if dextro.observacao %} {{ dextro.observacao }}{% endif %}</td>
+		<td>{% if dextro.responsavel %} {{ dextro.responsavel }}{% endif %}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div> 
+
+  {% else %} 
+
+    <p>Não há nenhum registro de controle de dextro</p> 
+
+  {% endif %}  
+
+{% endblock %}

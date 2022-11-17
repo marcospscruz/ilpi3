@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Estoque</h1>
+  <a href="{% url 'estoque-create' %}" class="btn btn-primary" role="button">Cadastrar novo estoque de ítens</a>
+  <a href="{% url 'estoquesprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a> 
+  <br><br>    
+
+  {% if estoque_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Ítem</th>
+		<th>Quantidade</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for estoque in estoque_list %}
+      <tr>
+		<td>{{ estoque.hospede }}</td>
+		<td>{{ estoque.item }}</td>
+		<td>{{ estoque.quantidade }}</td>
+		<td><a href="{% url 'estoque-update' estoque.id %}" class="btn btn-primary" role="button">Editar</a</td>
+		<td><a href="{% url 'estoque-delete' estoque.id %}" class="btn btn-primary" role="button">Excluir</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+ 
+
+  {% else %} 
+
+    <p>Não há ítens em estoque.</p> 
+
+  {% endif %}  
+
+{% endblock %}

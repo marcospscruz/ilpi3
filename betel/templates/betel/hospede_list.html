@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %} 
+
+ 
+
+{% block content %} 
+
+  <h1>Lista de Hóspedes</h1> 
+<a href="{% url 'hospede-create' %}" class="btn btn-primary" role="button">Cadastrar novo hóspede</a>
+<a href="{% url 'hospedesprint' %}" class="btn btn-primary" role="button" target="_blank">Imprimir</a>
+<br><br>
+  {% if hospede_list %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Hóspede</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for hospede in hospede_list %}
+      <tr>
+		<td><a href="{{ hospede.get_absolute_url }}">{{ hospede.nome_do_hospede }}</a></td>
+		<td><a href="{% url 'hospede-update' hospede.id %}" class="btn btn-primary" role="button">Editar</a></td>
+		<td><a href="{% url 'hospede-delete' hospede.id %}" class="btn btn-primary" role="button">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+
+  {% else %} 
+
+    <p>Não há hóspedes cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

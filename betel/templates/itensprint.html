@@ -1,0 +1,34 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Ítens</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+  {% if itens %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+      <tr>
+        <th>Ítem</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for item in itens %}
+      <tr>
+		<td>{{ item.nome }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div> 
+
+
+  {% else %} 
+
+    <p>Não há ítens cadastrados.</p> 
+
+  {% endif %}  
+
+{% endblock %}

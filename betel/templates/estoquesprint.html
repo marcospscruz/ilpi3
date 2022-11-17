@@ -1,0 +1,42 @@
+{% extends "print_generic.html" %} 
+
+
+{% block content %} 
+
+ <h1>Estoque</h1>
+<button onclick="window.print()" class="btn btn-primary" role="button">Imprimir / Salvar como PDF</button>  
+
+  {% if estoques %} 
+
+	<div class="table-responsive">
+	<table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por hóspede aqui"/></th>
+			<th></th>
+			<th></th>
+	  </tr>  
+      <tr>
+        <th>Hóspede</th>
+        <th>Ítem</th>
+		<th>Quantidade</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for estoque in estoques %}
+      <tr>
+		<td>{{ estoque.hospede }}</td>
+		<td>{{ estoque.item }}</td>
+		<td>{{ estoque.quantidade }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>  
+
+  {% else %} 
+
+    <p>Não há ítens em estoque.</p> 
+
+  {% endif %}  
+
+{% endblock %}
