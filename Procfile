@@ -1,1 +1,1 @@
-web: gunicorn ilpibetel.wsgi --log-file -
+web: python manage.py migrate && gunicorn ilpibetel.wsgi
