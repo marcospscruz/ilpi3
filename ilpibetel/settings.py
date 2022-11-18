@@ -150,4 +150,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # Redirect to home URL after login (Default redirects to /accounts/profile/) 
 LOGIN_REDIRECT_URL = '/' 
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-1e6b.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app/']
