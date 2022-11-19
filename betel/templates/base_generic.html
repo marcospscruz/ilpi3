@@ -19,6 +19,19 @@
 	{% load static %}
 	<script type="text/javascript" src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
+	  <script type="text/javascript" src="{% static 'scripts\acctoolbar.min.js' %}"></script>
+
+<script>
+// optional init
+  window.onload = function() {
+    window.micAccessTool = new MicAccessTool({
+      link: 'https://drive.google.com/file/d/1BJ40Jb9NKKZuZu02baWzNaFY5PAAwqx3/view?usp=sharing',
+      contact: 'proj.int.navegantes@gmail.com',
+      buttonPosition: 'right', // default is 'left'
+      forceLang: 'pt-BR' // default is 'en' may be 'he-IL', 'ru-RU', or 'fr_FR'
+    });
+  }
+</script>
 
 </head> 
 
