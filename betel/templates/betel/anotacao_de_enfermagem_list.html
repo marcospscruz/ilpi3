@@ -35,7 +35,7 @@
       <tr>
 		<td>{% if anotacao_de_enfermagem.hospede %} {{ anotacao_de_enfermagem.hospede }}{% endif %}</td>
 		<td>{% if anotacao_de_enfermagem.data_hora %} {{ anotacao_de_enfermagem.data_hora }}{% endif %}</td>
-		<td>{% if anotacao_de_enfermagem.anotacao %} {{ anotacao_de_enfermagem.data_hora }}{% endif %}</td>
+		<td>{% if anotacao_de_enfermagem.anotacao %} {{ anotacao_de_enfermagem.anotacao }}{% endif %}</td>
 		<td>{% if anotacao_de_enfermagem.responsavel %} {{ anotacao_de_enfermagem.responsavel }}{% endif %}</td>
 		<td><a href="{% url 'anotacao-update' anotacao_de_enfermagem.id %}" class="btn btn-primary" role="button">Editar</a></td>
 		<td><a href="{% url 'anotacao-delete' anotacao_de_enfermagem.id %}" class="btn btn-primary" role="button">Excluir</a></td>
